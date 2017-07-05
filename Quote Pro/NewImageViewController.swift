@@ -73,7 +73,7 @@ class NewImageViewController: UIViewController {
     @IBAction func getImagePressed(_ sender: Any) {
         imageGetter.generateImage(completionHandler: {
             (image:UIImage) in
-            self.newQuote.image = UIImageJPEGRepresentation(image, 0.7)
+            self.newQuote.image = UIImageJPEGRepresentation(image, 1.0)
             self.reloadQuotePreview()
             //self.imageView.image = image
         })

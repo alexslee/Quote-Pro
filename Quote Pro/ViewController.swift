@@ -48,5 +48,26 @@ class ViewController: UITableViewController {
         cell.quoteLabel.text = cellQuote.quoteText!
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedQuote = objects![indexPath.row]
+        let formattedView = Bundle.main.loadNibNamed("FormattedQuoteView", owner: nil, options: nil)?.first as? FormattedQuoteView
+        
+        let frame = CGRect(x: self.view.center.x, y: self.view.center.x, width: 300, height: 300)
+        formattedView?.frame = frame
+        formattedView?.formatQuote(quote: selectedQuote)
+        let screenshot = snapshot(view: (formattedView!))
+        
+        let activityViewController = UIActivityViewController(activityItems: [screenshot], applicationActivities: nil)
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    func snapshot(view: UIView) -> UIImage {
+        UIGraphicsBeginImageContext(view.bounds.size)
+        view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
 }
 
