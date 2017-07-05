@@ -34,6 +34,7 @@ class NewImageViewController: UIViewController {
         quotePreview?.frame.size = showFormattedQuoteView.frame.size
         showFormattedQuoteView.addSubview(quotePreview)
         newQuote = Quote()
+        reloadQuotePreview()
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,8 +54,10 @@ class NewImageViewController: UIViewController {
     */
 
     func reloadQuotePreview() {
-        self.quotePreview.formatQuote(quote: self.newQuote)
-    }
+        DispatchQueue.main.async {
+            self.quotePreview.formatQuote(quote: self.newQuote)
+        }
+}
     
     // MARK: actions
     
