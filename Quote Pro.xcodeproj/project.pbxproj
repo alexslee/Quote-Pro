@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4361359A1F0D4F9A00293B10 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436135991F0D4F9A00293B10 /* Quote.swift */; };
+		436C1AFA1F0D59B100EC0287 /* FormattedQuoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 436C1AF91F0D59B100EC0287 /* FormattedQuoteView.xib */; };
+		436C1AFC1F0D5AE700EC0287 /* FormattedQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436C1AFB1F0D5AE700EC0287 /* FormattedQuoteView.swift */; };
 		43C0BFB11F0CBEAC007C0C32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C0BFB01F0CBEAC007C0C32 /* AppDelegate.swift */; };
 		43C0BFB31F0CBEAC007C0C32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C0BFB21F0CBEAC007C0C32 /* ViewController.swift */; };
 		43C0BFB61F0CBEAC007C0C32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43C0BFB41F0CBEAC007C0C32 /* Main.storyboard */; };
@@ -22,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		436135991F0D4F9A00293B10 /* Quote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		436C1AF91F0D59B100EC0287 /* FormattedQuoteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FormattedQuoteView.xib; sourceTree = "<group>"; };
+		436C1AFB1F0D5AE700EC0287 /* FormattedQuoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormattedQuoteView.swift; sourceTree = "<group>"; };
 		43C0BFAD1F0CBEAC007C0C32 /* Quote Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quote Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43C0BFB01F0CBEAC007C0C32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43C0BFB21F0CBEAC007C0C32 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +91,8 @@
 				43C0BFB21F0CBEAC007C0C32 /* ViewController.swift */,
 				43C0BFC41F0D4785007C0C32 /* NewImageViewController.swift */,
 				43C0BFB41F0CBEAC007C0C32 /* Main.storyboard */,
+				436C1AF91F0D59B100EC0287 /* FormattedQuoteView.xib */,
+				436C1AFB1F0D5AE700EC0287 /* FormattedQuoteView.swift */,
 				43C0BFB71F0CBEAC007C0C32 /* Assets.xcassets */,
 				43C0BFB91F0CBEAC007C0C32 /* LaunchScreen.storyboard */,
 				43C0BFBC1F0CBEAC007C0C32 /* Info.plist */,
@@ -167,6 +173,7 @@
 			files = (
 				43C0BFBB1F0CBEAC007C0C32 /* LaunchScreen.storyboard in Resources */,
 				43C0BFB81F0CBEAC007C0C32 /* Assets.xcassets in Resources */,
+				436C1AFA1F0D59B100EC0287 /* FormattedQuoteView.xib in Resources */,
 				43C0BFB61F0CBEAC007C0C32 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,6 +235,7 @@
 			files = (
 				43C0BFB31F0CBEAC007C0C32 /* ViewController.swift in Sources */,
 				43C0BFB11F0CBEAC007C0C32 /* AppDelegate.swift in Sources */,
+				436C1AFC1F0D5AE700EC0287 /* FormattedQuoteView.swift in Sources */,
 				43C0BFC71F0D4914007C0C32 /* ForismaticController.swift in Sources */,
 				43F284621F0D5311009C0D02 /* LoremPixelController.swift in Sources */,
 				43C0BFC31F0CBF73007C0C32 /* QuoteProTableViewCell.swift in Sources */,

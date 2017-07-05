@@ -11,7 +11,11 @@ import RealmSwift
 
 class NewImageViewController: UIViewController {
     
-    @IBOutlet weak var imageView: UIImageView!
+    //@IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var showFormattedQuoteView: UIView!
+    
+    var quotePreview:FormattedQuoteView!
     
     var quoteGetter: ForismaticController!
     
@@ -26,6 +30,9 @@ class NewImageViewController: UIViewController {
         // Do any additional setup after loading the view.
         quoteGetter = ForismaticController()
         imageGetter = LoremPixelController()
+        quotePreview = Bundle.main.loadNibNamed("FormattedQuoteView", owner: nil, options: nil)?.first as? FormattedQuoteView
+        quotePreview?.frame.size = showFormattedQuoteView.frame.size
+        showFormattedQuoteView.addSubview(quotePreview)
         newQuote = Quote()
     }
 
@@ -45,11 +52,18 @@ class NewImageViewController: UIViewController {
     }
     */
 
+    func reloadQuotePreview() {
+        self.quotePreview.formatQuote(quote: self.newQuote)
+    }
+    
+    // MARK: actions
+    
     @IBAction func getQuotePressed(_ sender: Any) {
         quoteGetter.generateQuote(completionHandler: {
             (quote:String, author:String) in
             self.newQuote.quoteText = quote
             self.newQuote.quoteAuthor = author
+            self.reloadQuotePreview()
         })
     }
     
@@ -57,7 +71,8 @@ class NewImageViewController: UIViewController {
         imageGetter.generateImage(completionHandler: {
             (image:UIImage) in
             self.newQuote.image = UIImageJPEGRepresentation(image, 0.7)
-            self.imageView.image = image
+            self.reloadQuotePreview()
+            //self.imageView.image = image
         })
     }
     

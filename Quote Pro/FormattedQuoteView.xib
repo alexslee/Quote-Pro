@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FormattedQuoteView" customModule="Quote_Pro" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kyY-JC-vKe">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PmP-Nc-xrC">
+                    <rect key="frame" x="10" y="50" width="355" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <size key="shadowOffset" width="1" height="0.0"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6lF-fn-WfP">
+                    <rect key="frame" x="164" y="91" width="47.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <size key="shadowOffset" width="1" height="0.0"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="6lF-fn-WfP" firstAttribute="top" secondItem="PmP-Nc-xrC" secondAttribute="bottom" constant="20" id="5lC-6n-DJS"/>
+                <constraint firstItem="6lF-fn-WfP" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="GmR-Rc-Ncs"/>
+                <constraint firstAttribute="bottom" secondItem="kyY-JC-vKe" secondAttribute="bottom" id="M33-Qp-yEp"/>
+                <constraint firstAttribute="trailing" secondItem="PmP-Nc-xrC" secondAttribute="trailing" constant="10" id="VA0-xp-rQt"/>
+                <constraint firstItem="kyY-JC-vKe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="X82-mT-pbZ"/>
+                <constraint firstAttribute="trailing" secondItem="kyY-JC-vKe" secondAttribute="trailing" id="bOS-pQ-7kF"/>
+                <constraint firstItem="PmP-Nc-xrC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="50" id="d2u-xF-mGS"/>
+                <constraint firstItem="kyY-JC-vKe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jpk-ee-Kel"/>
+                <constraint firstItem="PmP-Nc-xrC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="kz0-Mw-R5E"/>
+            </constraints>
+            <connections>
+                <outlet property="quoteAuthor" destination="6lF-fn-WfP" id="ngB-LH-Rrx"/>
+                <outlet property="quoteImage" destination="kyY-JC-vKe" id="dbb-fY-xLn"/>
+                <outlet property="quoteLabel" destination="PmP-Nc-xrC" id="hSe-85-VMM"/>
+            </connections>
+        </view>
+    </objects>
+</document>
