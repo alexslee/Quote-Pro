@@ -7,15 +7,26 @@
 //
 
 import UIKit
+import RealmSwift
 
 class NewImageViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
-
+    
+    var quoteGetter: ForismaticController!
+    
+    var imageGetter: LoremPixelController!
+    
+    var newQuote: Quote!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        quoteGetter = ForismaticController()
+        imageGetter = LoremPixelController()
+        newQuote = Quote()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,11 +46,19 @@ class NewImageViewController: UIViewController {
     */
 
     @IBAction func getQuotePressed(_ sender: Any) {
-        
+        quoteGetter.generateQuote(completionHandler: {
+            (quote:String, author:String) in
+            self.newQuote.quoteText = quote
+            self.newQuote.quoteAuthor = author
+        })
     }
     
     @IBAction func getImagePressed(_ sender: Any) {
-    
+        imageGetter.generateImage(completionHandler: {
+            (image:UIImage) in
+            self.newQuote.image = UIImageJPEGRepresentation(image, 0.7)
+            self.imageView.image = image
+        })
     }
     
     @IBAction func savePressed(_ sender: Any) {
