@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 class Quote: Object {
-    
+    //dynamic vars and subclass of Object for Realm compatibility
     dynamic var quoteText: String?
     dynamic var quoteAuthor: String?
     dynamic var image: Data?

@@ -11,7 +11,7 @@ import RealmSwift
 
 class NewImageViewController: UIViewController {
     
-    //@IBOutlet weak var imageView: UIImageView!
+    // MARK: properties
     
     @IBOutlet weak var showFormattedQuoteView: UIView!
     
@@ -27,7 +27,7 @@ class NewImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        // initialize properties + the quote preview view
         quoteGetter = ForismaticController()
         imageGetter = LoremPixelController()
         quotePreview = Bundle.main.loadNibNamed("FormattedQuoteView", owner: nil, options: nil)?.first as? FormattedQuoteView
@@ -36,32 +36,34 @@ class NewImageViewController: UIViewController {
         newQuote = Quote()
         reloadQuotePreview()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
     func reloadQuotePreview() {
+        //reload the preview asynchronously on the main thread
         DispatchQueue.main.async {
             self.quotePreview.formatQuote(quote: self.newQuote)
         }
-}
+    }
     
     // MARK: actions
     
     @IBAction func getQuotePressed(_ sender: Any) {
+        //get a quote from Forismatic, and set the labels in the quote preview if successful
         quoteGetter.generateQuote(completionHandler: {
             (quote:String, author:String) in
             self.newQuote.quoteText = quote
@@ -71,15 +73,16 @@ class NewImageViewController: UIViewController {
     }
     
     @IBAction func getImagePressed(_ sender: Any) {
+        //get an image from LoremPixel, and set the image in the quote preview if successful
         imageGetter.generateImage(completionHandler: {
             (image:UIImage) in
             self.newQuote.image = UIImageJPEGRepresentation(image, 1.0)
             self.reloadQuotePreview()
-            //self.imageView.image = image
         })
     }
     
     @IBAction func savePressed(_ sender: Any) {
+        //save the quote to realm, will be loaded in the main table view controller
         let realm = try! Realm()
         try! realm.write {
             realm.add(self.newQuote)
@@ -89,6 +92,7 @@ class NewImageViewController: UIViewController {
     
     
     @IBAction func cancelPressed(_ sender: Any) {
+        //return to the main table view controller
         self.dismiss(animated: true, completion: nil)
     }
 }

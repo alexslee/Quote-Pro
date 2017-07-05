@@ -9,12 +9,14 @@
 import Foundation
 
 class ForismaticController:NSObject {
+    
+    //fetches a quote from forismatic's api, and if successful, runs the completion block with the data obtained
     func generateQuote(completionHandler: @escaping (String, String) -> Void) {
         let url = URL(string: "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json")
         let session = URLSession.shared
         let req = URLRequest(url: url!)
         let task = session.dataTask(with: req) { (data: Data?, resp: URLResponse?, err: Error?) in
-            
+            //don't run the completion block if anything the task returned was invalid and/or an error occurred
             guard let data = data else {
                 
                 print("no data returned from server \(String(describing: err))")
@@ -32,9 +34,10 @@ class ForismaticController:NSObject {
                 return
             }
             
+            //200 for successful get, failed otherwise
             guard resp.statusCode == 200 else {
                 
-                print("photo post failed")
+                print("quote get failed")
                 return
             }
             
@@ -45,15 +48,5 @@ class ForismaticController:NSObject {
         }
         task.resume()
         
-//        session.dataTask(with: url!, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-//            do {
-//                let jsonData: NSDictionary = try JSONSerialization.jsonObject(with: Data, options: .mutableContainers) as! [String:Any]
-//                let quoteText = jsonData["quoteText"] as! String
-//                let quoteAuthor = jsonData["quoteAuthor"] as! String
-//                completionHandler(quoteText, quoteAuthor)
-//            } catch {
-//                print(error)
-//            }
-//        }).resume()
     }
 }

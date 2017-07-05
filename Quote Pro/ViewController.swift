@@ -11,6 +11,8 @@ import RealmSwift
 
 class ViewController: UITableViewController {
 
+    // MARK: properties
+    
     var objects:Results<Quote>?
     
     override func viewDidLoad() {
@@ -31,6 +33,7 @@ class ViewController: UITableViewController {
     }
 
     // MARK: UITableViewController
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -42,10 +45,12 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! QuoteProTableViewCell
         let cellQuote = objects![indexPath.row]
+        
         cell.quoteImage.image = UIImage(data: cellQuote.image!)
         cell.quoteImage.contentMode = .scaleAspectFill
         cell.quoteImage.layer.masksToBounds = true
         cell.quoteLabel.text = cellQuote.quoteText!
+        
         return cell
     }
     
@@ -63,10 +68,13 @@ class ViewController: UITableViewController {
     }
     
     func snapshot(view: UIView) -> UIImage {
+        //adapted from https://developer.apple.com/library/content/qa/qa1817/_index.html
+        
         UIGraphicsBeginImageContext(view.bounds.size)
         view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        
         return image!
     }
 }
