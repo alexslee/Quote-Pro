@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class Quote: NSObject {
+class Quote: Object {
     
     dynamic var quoteText: String?
     dynamic var quoteAuthor: String?

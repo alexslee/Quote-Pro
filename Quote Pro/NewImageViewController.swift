@@ -80,7 +80,11 @@ class NewImageViewController: UIViewController {
     }
     
     @IBAction func savePressed(_ sender: Any) {
-        
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(self.newQuote)
+        }
+        self.dismiss(animated: true, completion: nil)
     }
     
     
