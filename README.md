@@ -4,4 +4,4 @@ Simple iOS application that allows a user to randomly generate a quote (via Fori
 
 ## Stretch Goals
 
-* allow user to select different image source (e.g. Unsplash)
+* ~~allow user to select different image source (e.g. Unsplash)~~
