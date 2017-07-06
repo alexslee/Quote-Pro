@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--My Quotes-->
         <scene sceneID="Kqg-Gy-E2M">
             <objects>
                 <tableViewController id="92h-oz-BWY" customClass="ViewController" customModule="Quote_Pro" customModuleProvider="target" sceneMemberID="viewController">
@@ -61,10 +61,10 @@
                             <outlet property="delegate" destination="92h-oz-BWY" id="B7E-z2-jhU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="mi6-E9-3qp">
+                    <navigationItem key="navigationItem" title="My Quotes" id="mi6-E9-3qp">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="kzk-Ev-KwS">
                             <connections>
-                                <segue destination="5Ac-cI-03a" kind="presentation" id="xys-PV-eX8"/>
+                                <segue destination="5Ac-cI-03a" kind="show" id="xys-PV-eX8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -86,7 +86,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ohv-DN-cEa">
-                                <rect key="frame" x="24" y="363" width="327" height="120"/>
+                                <rect key="frame" x="24" y="407" width="327" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KeW-KX-2Vd">
                                         <rect key="frame" x="0.0" y="0.0" width="327" height="30"/>
@@ -109,17 +109,17 @@
                                             <action selector="savePressed:" destination="5Ac-cI-03a" eventType="touchUpInside" id="Y2h-aI-bvb"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXc-rx-Wwa">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAl-eP-t1A">
                                         <rect key="frame" x="0.0" y="90" width="327" height="30"/>
-                                        <state key="normal" title="Cancel"/>
+                                        <state key="normal" title="Image Source"/>
                                         <connections>
-                                            <action selector="cancelPressed:" destination="5Ac-cI-03a" eventType="touchUpInside" id="qdP-Dn-GpA"/>
+                                            <action selector="pickImageSource:" destination="5Ac-cI-03a" eventType="touchUpInside" id="ueA-9v-dNR"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYy-Iy-KFu">
-                                <rect key="frame" x="24" y="28" width="327" height="327"/>
+                                <rect key="frame" x="24" y="72" width="327" height="327"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="BYy-Iy-KFu" secondAttribute="height" multiplier="1:1" id="a5J-9l-EOk"/>
@@ -137,6 +137,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageSourcePicker" destination="qAl-eP-t1A" id="vC6-eW-m3O"/>
                         <outlet property="showFormattedQuoteView" destination="BYy-Iy-KFu" id="ifv-wL-PHG"/>
                     </connections>
                 </viewController>
