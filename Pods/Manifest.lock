@@ -5,16 +5,19 @@ PODS:
   - Realm/Headers (2.8.3)
   - RealmSwift (2.8.3):
     - Realm (= 2.8.3)
+  - TBDropdownMenu (2.5.1)
 
 DEPENDENCIES:
   - Nuke (~> 5.1)
   - RealmSwift
+  - TBDropdownMenu
 
 SPEC CHECKSUMS:
   Nuke: 0a2ddb4bd13d75782964bf598a159ca2a836d826
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
   RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
+  TBDropdownMenu: 86f429576f0ac84018aee0090c0e15b456c4aea1
 
-PODFILE CHECKSUM: 48ddf66b0cf83516c1df644e9b2f5cec86066214
+PODFILE CHECKSUM: 1009ea3fcdb128da21332a2fde463e6154c4624b
 
 COCOAPODS: 1.2.1

@@ -8,7 +8,7 @@
 
 import UIKit
 import RealmSwift
-
+import TBDropdownMenu
 class NewImageViewController: UIViewController {
     
     // MARK: properties
@@ -19,17 +19,21 @@ class NewImageViewController: UIViewController {
     
     var quoteGetter: ForismaticController!
     
-    var imageGetter: LoremPixelController!
+    var imageGetter: ImageSourceController?
     
     var newQuote: Quote!
     
+    var items: [[DropdownItem]]!
+    
+    @IBOutlet weak var imageSourcePicker: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // initialize properties + the quote preview view
         quoteGetter = ForismaticController()
-        imageGetter = LoremPixelController()
+        imageGetter = nil
+        
         quotePreview = Bundle.main.loadNibNamed("FormattedQuoteView", owner: nil, options: nil)?.first as? FormattedQuoteView
         quotePreview?.frame.size = showFormattedQuoteView.frame.size
         showFormattedQuoteView.addSubview(quotePreview)
@@ -42,17 +46,6 @@ class NewImageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
     func reloadQuotePreview() {
         //reload the preview asynchronously on the main thread
         DispatchQueue.main.async {
@@ -61,6 +54,18 @@ class NewImageViewController: UIViewController {
     }
     
     // MARK: actions
+    
+    @IBAction func pickImageSource(_ sender: Any) {
+        
+        let item1 = DropdownItem(title: "LoremPixel")
+        let item2 = DropdownItem(title: "Unsplash")
+        let data = [item1, item2]
+        items = [data]
+        let menuView = DropUpMenu(items: data, selectedRow: 0, bottomOffsetY: self.tabBarController?.tabBar.frame.height ?? 0)
+        menuView.delegate = self
+        menuView.showMenu()
+        
+    }
     
     @IBAction func getQuotePressed(_ sender: Any) {
         //get a quote from Forismatic, and set the labels in the quote preview if successful
@@ -73,8 +78,11 @@ class NewImageViewController: UIViewController {
     }
     
     @IBAction func getImagePressed(_ sender: Any) {
-        //get an image from LoremPixel, and set the image in the quote preview if successful
-        imageGetter.generateImage(completionHandler: {
+        if imageGetter == nil {
+            imageGetter = ImageSourceController(service:"")
+        }
+        //get an image, and set the image in the quote preview if successful
+        imageGetter?.generateImage(completionHandler: {
             (image:UIImage) in
             self.newQuote.image = UIImageJPEGRepresentation(image, 1.0)
             self.reloadQuotePreview()
@@ -87,12 +95,19 @@ class NewImageViewController: UIViewController {
         try! realm.write {
             realm.add(self.newQuote)
         }
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
+}
+
+// MARK: DropUpMenuDelegate
+
+extension NewImageViewController: DropUpMenuDelegate {
+    func dropUpMenu(_ dropUpMenu: DropUpMenu, didSelectRowAt indexPath: IndexPath) {
+        imageGetter = ImageSourceController(service: items[indexPath.section][indexPath.row].title)
+    }
     
-    @IBAction func cancelPressed(_ sender: Any) {
-        //return to the main table view controller
-        self.dismiss(animated: true, completion: nil)
+    func dropUpMenuCancel(_ dropUpMenu: DropUpMenu) {
+        //print("select cancel")
     }
 }

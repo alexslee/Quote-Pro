@@ -8,5 +8,6 @@ target 'Quote Pro' do
   # Pods for Quote Pro
     pod 'RealmSwift'
     pod 'Nuke', '~> 5.1'
+    pod 'TBDropdownMenu'
 
 end
